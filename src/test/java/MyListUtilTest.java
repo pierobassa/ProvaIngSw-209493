@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Vector;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -27,6 +28,14 @@ public class MyListUtilTest {
 		Integer[] expected = {1, 2, 3, 4, 6, 9};
 		
 		Vector<Integer> numbersV = new Vector<Integer>(Arrays.asList(numbers));
-		Vector<Integer> orderResult = 
+		Vector<Integer> orderResult = (Vector<Integer>) myListUtil.sort(numbersV, 0);
+		
+		Integer[] orderRs = new Integer[orderResult.size()];
+		
+		for(int i=0; i<orderRs.length; i++) {
+			orderRs[i] = orderResult.elementAt(i);
+		}
+		
+		Assert.assertArrayEquals(expected, orderRs);
 	}
 }
