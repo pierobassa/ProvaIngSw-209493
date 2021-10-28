@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Vector;
 
+import org.joda.time.DateTime;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,6 +13,7 @@ import listutil.MyListUtil;
 public class MyListUtilTest {
 	
 	private static MyListUtil myListUtil;
+	DateTime dateTime;
 	
 	@BeforeClass
 	public static void beforeClassPrint() {
@@ -21,10 +23,13 @@ public class MyListUtilTest {
 	@Before
 	public void initList() {
 		myListUtil = new MyListUtil();
+		dateTime = new DateTime();
 	}
 	
 	@Test
 	public void testSortCrescente() {
+		System.out.println("Ascendent Test start : " + dateTime.toString());
+		
 		Integer[] numbers = {6, 2, 1, 9, 3, 4};
 		Integer[] expected = {1, 2, 3, 4, 6, 9};
 		
@@ -38,10 +43,15 @@ public class MyListUtilTest {
 		}
 		
 		Assert.assertArrayEquals(expected, orderRs);
+		
+		dateTime = new DateTime();
+		System.out.println("Ascendent Test end : " + dateTime.toString());
 	}
 	
 	@Test
 	public void testSortDecrescente() {
+		System.out.println("Descendent Test start : " + dateTime.toString());
+		
 		Integer[] numbers = {6, 2, 1, 9, 3, 4};
 		Integer[] expected = {9, 6, 4, 3, 2, 1};
 		
@@ -55,6 +65,9 @@ public class MyListUtilTest {
 		}
 		
 		Assert.assertArrayEquals(expected, orderRs);
+		
+		dateTime = new DateTime();
+		System.out.println("Descendent Test end : " + dateTime.toString());
 	}
 	
 	@AfterClass
